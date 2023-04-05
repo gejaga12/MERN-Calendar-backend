@@ -1,8 +1,12 @@
-const express = require('express');
 require('dotenv').config();
+const express = require('express');
+const { dbConnection } = require('./database/config')
 
 // CREAR EL SERVIDOR DE EXPRESS
 const app = express();
+
+// BASE DE DATOS
+dbConnection();
 
 // DIRECTORIO PUBLICO
 app.use(express.static('public'));
@@ -11,7 +15,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // RUTAS
-app.use( '/api/auth', require('./routes/auth') );
+app.use('/api/auth', require('./routes/auth'));
 
 // TODO : CRUD : Eventos
 
