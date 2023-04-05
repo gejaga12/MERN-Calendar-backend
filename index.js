@@ -7,13 +7,11 @@ const app = express();
 // DIRECTORIO PUBLICO
 app.use(express.static('public'));
 
-
+// LECTURA Y PARSEO DEL BODY
+app.use(express.json());
 
 // RUTAS
 app.use( '/api/auth', require('./routes/auth') );
-
-// LECTURA Y PARSEO DEL BODY
-app.use(express.json());
 
 // TODO : CRUD : Eventos
 

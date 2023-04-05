@@ -2,28 +2,41 @@ const { response } = require('express');
 
 const crearUsuario = (req, res = response) => {
 
-    console.log('====================================');
-    console.log(req.body);
-    console.log('====================================');
+    const { name, email, password } = req.body;
+
+    if (name.length < 5) {
+        return res.status(400).json({
+            ok: false,
+            msg: "El nombre debe tener más de 5 caracteres"
+        })
+    }
 
     res.json({
         ok: true,
         msg: 'registro',
-        user: req.body,
+        name,
+        email,
+        password,
     });
 }
 
 const loginUsuario = (req, res = response) => {
-       res.json({
+
+    const { email, password } = req.body;
+
+    res.json({
         ok: true,
-        msg: 'login'
+        msg: 'login',
+        email,
+        password,
     });
 }
 
 const revalidarToken = (req, res = response) => {
     res.json({
         ok: true,
-        msg: 'renew'
+        msg: 'renew',
+
     });
 }
 
