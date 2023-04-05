@@ -12,11 +12,10 @@ app.use(express.static('public'));
 // RUTAS
 app.use( '/api/auth', require('./routes/auth') );
 
-
+// LECTURA Y PARSEO DEL BODY
+app.use(express.json());
 
 // TODO : CRUD : Eventos
-
-
 
 // ESCUCHAR PETICIONES
 app.listen(process.env.PORT, () => {
