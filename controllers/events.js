@@ -4,7 +4,7 @@ const Evento = require('../models/Evento')
 const getEventos = async (req, res = response) => {
 
       const eventos = await Evento.find()
-            .populate('user', 'name password')
+            .populate('user', 'name')
 
       res.json({
             ok: true,
@@ -104,7 +104,7 @@ const eliminarEvento = async (req, res = response) => {
             res.json({
                   ok: true,
             })
-
+                  
       } catch (error) {
             console.log(error);
             res.status(500).json({
